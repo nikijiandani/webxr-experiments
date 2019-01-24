@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- required -->
-    <script src="./node_modules/three/build/three.min.js"></script>
+    <script src="../boilerplate/node_modules/three/build/three.min.js"></script>
     <!-- needed for loading GLTF files -->
     <script src="./node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
     <!-- needed for loading Truetype Fonts -->
@@ -83,7 +83,7 @@
     //called on setup. Customize this
     function initContent(scene,camera,renderer) {
         //set the background color of the scene
-        scene.background = new THREE.Color( 0xcccccc );
+        scene.background = new THREE.Color( 0xEFFFCD );
 
         //load a cat texture
         const texture_loader = new THREE.TextureLoader()
