@@ -90,18 +90,12 @@
         //cat from http://creative-commons-cats.tumblr.com/page/3
         const texture = texture_loader.load('./cat.jpg')
 
-        //create a cube
-        cube = new THREE.Mesh(
-            new THREE.BoxGeometry(1,1,1),
-            new THREE.MeshLambertMaterial({color:'white', map:texture})
-        )
-        //camera is at z=0, so move the cube back so we can see it
-        cube.position.z = -5
-        //move cube up to camera height (~1.5m)
-        cube.position.y = 1.5
-        //make it clickable
-        cube.userData.clickable = true
-        scene.add(cube)
+        //adding gltf loader 
+        const gltf_loader = new THREE.GLTFLoader()
+        gltf_loader.load('./birthdayCardScene.glb', (model)=>{
+            model.scene.position.set(0, 0, -10)
+            scene.add(model.scene)
+        })
 
         //a standard light
         const light = new THREE.DirectionalLight( 0xffffff, 1.0 );
@@ -131,22 +125,6 @@
             // good for testing VR controls on desktop
             mouseSimulatesController:false,
 
-        })
-
-
-        //change cube to red BG when clicking
-        on(cube,POINTER_CLICK,()=>{
-            console.log("clicking on the cube")
-            cube.material.color.set(0xff0000)
-        })
-        //change cube to green BG when hovering over it
-        on(cube,POINTER_ENTER,()=>{
-            console.log("entering the cube")
-            cube.material.color.set(0x00ff00)
-        })
-        on(cube,POINTER_EXIT,()=>{
-            console.log('exiting the cube')
-            cube.material.color.set(0xffffff)
         })
 
     }
