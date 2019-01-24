@@ -83,7 +83,7 @@
     //called on setup. Customize this
     function initContent(scene,camera,renderer) {
         //set the background color of the scene
-        scene.background = new THREE.Color( 0xEFFFCD );
+        scene.background = new THREE.Color( 0x22ddff );
 
         //load a cat texture
         const texture_loader = new THREE.TextureLoader()
@@ -102,8 +102,9 @@
         light.position.set( 1, 1, 1 ).normalize();
         scene.add( light );
 
-
-
+        //ambient light
+        const amb = new THREE.AmbientLight( 0xffffff, 0.3 )
+        scene.add(amb);
 
 
         // enable stats visible inside VR
